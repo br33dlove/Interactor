@@ -1,4 +1,4 @@
-package com.example.davidc.interactorlibrary;
+package com.example.davidc.interactor;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

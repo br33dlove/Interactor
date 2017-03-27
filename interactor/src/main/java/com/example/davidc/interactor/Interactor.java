@@ -1,4 +1,4 @@
-package com.example.davidc.interactorlibrary;
+package com.example.davidc.interactor;
 
 public class Interactor {
     private final TaskScheduler taskScheduler;
