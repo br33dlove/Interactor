@@ -1,4 +1,4 @@
-package com.example.davidc.interactor;
+package com.davidc.interactor;
 
 import java.util.concurrent.ThreadPoolExecutor;
 

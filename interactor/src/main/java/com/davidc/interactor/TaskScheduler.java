@@ -1,4 +1,4 @@
-package com.example.davidc.interactor;
+package com.davidc.interactor;
 
 public interface TaskScheduler {
     void executeOnBoundThread(final Task task);
