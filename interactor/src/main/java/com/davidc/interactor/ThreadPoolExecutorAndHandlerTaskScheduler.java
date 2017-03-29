@@ -6,16 +6,16 @@ import android.os.Looper;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class ThreadPoolExecutorAndHandlerTaskScheduler extends ThreadPoolExecutorTaskScheduler {
-    private final Handler handler;
+    private final Handler callbackHandler;
 
-    public ThreadPoolExecutorAndHandlerTaskScheduler(ThreadPoolExecutor threadPoolExecutor, Looper looper) {
+    public ThreadPoolExecutorAndHandlerTaskScheduler(ThreadPoolExecutor threadPoolExecutor, Looper callbackLooper) {
         super(threadPoolExecutor);
-        this.handler = new Handler(looper);
+        this.callbackHandler = new Handler(callbackLooper);
     }
 
     @Override
     public void executeOnCallbackThread(final Task task) {
-        handler.post(new Runnable() {
+        callbackHandler.post(new Runnable() {
             @Override
             public void run() {
                 task.execute();
