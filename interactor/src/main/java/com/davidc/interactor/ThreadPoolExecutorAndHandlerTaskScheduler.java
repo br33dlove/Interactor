@@ -14,7 +14,7 @@ public class ThreadPoolExecutorAndHandlerTaskScheduler extends ThreadPoolExecuto
     }
 
     @Override
-    public void executeOnBoundThread(final Task task) {
+    public void executeOnCallbackThread(final Task task) {
         handler.post(new Runnable() {
             @Override
             public void run() {
