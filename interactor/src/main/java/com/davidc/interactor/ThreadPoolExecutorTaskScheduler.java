@@ -2,10 +2,10 @@ package com.davidc.interactor;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
-public abstract class ThreadPoolExecutorTaskScheduler implements TaskScheduler {
+abstract class ThreadPoolExecutorTaskScheduler implements TaskScheduler {
     private final ThreadPoolExecutor threadPoolExecutor;
 
-    protected ThreadPoolExecutorTaskScheduler(ThreadPoolExecutor threadPoolExecutor) {
+    ThreadPoolExecutorTaskScheduler(ThreadPoolExecutor threadPoolExecutor) {
         this.threadPoolExecutor = threadPoolExecutor;
     }
 
