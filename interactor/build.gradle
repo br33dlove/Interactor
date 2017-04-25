@@ -1,6 +1,24 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.dcendents.android-maven'
+
+ext {
+    packagingFormat = 'aar'
+    groupPath = 'com.davidcryer.interactor'
+    artifactName = 'interactor'
+    libraryName = 'Interactor'
+    libraryDescription = 'Library to provide quick, yet customisable, way of implementing concurrency'
+    gitWebsiteUrl = 'https://github.com/davidcryer/Interactor'
+    gitUrl = 'https://github.com/davidcryer/Interactor.git'
+    licenseArray = ['MIT']
+    licenseName = 'The MIT License'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    developerId = 'davidcryer'
+    developerName = 'David Cryer'
+    developerEmail = 'davecryer.dc@gmail.com'
+    mavenRepoName = 'maven'
+    libraryVersionCode = 1
+    versionTag = '0.1.0'
+    versionDescription = 'Version 0.1.0'
+}
 
 android {
     compileSdkVersion 25
@@ -8,8 +26,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 25
-        versionName '0.1.0'
-        versionCode 1
+        versionName versionTag
+        versionCode libraryVersionCode
     }
     buildTypes {
         release {
@@ -23,98 +41,4 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                groupId 'com.davidcryer.interactor'
-                artifactId 'interactor'
-
-                // Add your description here
-                name 'Interactor'
-                description 'Library to provide quick, yet customisable, way of implementing concurrency'
-                url 'https://github.com/davidcryer/Interactor'
-
-                // Set your license
-                licenses {
-                    license {
-                        name 'The MIT License'
-                        url 'https://opensource.org/licenses/MIT'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'davidcryer'
-                        name 'David Cryer'
-                        email 'davecryer.dc@gmail.com'
-                    }
-                }
-                scm {
-                    connection 'https://github.com/davidcryer/Interactor.git'
-                    developerConnection 'https://github.com/davidcryer/Interactor.git'
-                    url 'https://github.com/davidcryer/Interactor'
-
-                }
-            }
-        }
-    }
-}
-
-if (project.hasProperty("android")) { // Android libraries
-    task sourcesJar(type: Jar) {
-        classifier = 'sources'
-        from android.sourceSets.main.java.srcDirs
-    }
-
-    task javadoc(type: Javadoc) {
-        source = android.sourceSets.main.java.srcDirs
-        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    }
-} else { // Java libraries
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = 'sources'
-        from sourceSets.main.allSource
-    }
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-version = '0.1.0'
-group = 'com.davidcryer.interactor'
-
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-
-    configurations = ['archives']
-    pkg {
-        repo = 'maven'
-        name = 'interactor'
-        desc = 'Library to provide quick, yet customisable, way of implementing concurrency'
-        websiteUrl = 'https://github.com/davidcryer/Interactor'
-        vcsUrl = 'https://github.com/davidcryer/Interactor.git'
-        licenses = ['MIT']
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            name = '0.1.0'
-            desc = 'Version 0.1.0'
-            released  = new Date()
-            vcsTag = '0.1.0'
-            desc = 'Library to provide quick, yet customisable, way of implementing concurrency'
-        }
-    }
-}
+apply from: 'https://raw.githubusercontent.com/davidcryer/BintrayUpload/master/upload.gradle'
