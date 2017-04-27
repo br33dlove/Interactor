@@ -1,6 +1,6 @@
 package com.davidc.interactor;
 
-public class Interactor {
+public abstract class Interactor {
     private final TaskScheduler taskScheduler;
 
     protected Interactor(TaskScheduler taskScheduler) {
