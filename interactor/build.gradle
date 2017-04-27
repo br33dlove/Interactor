@@ -8,9 +8,9 @@ ext {
     libraryDescription = 'Library to provide quick, yet customisable, way of implementing concurrency'
     gitWebsiteUrl = 'https://github.com/davidcryer/Interactor'
     gitUrl = 'https://github.com/davidcryer/Interactor.git'
-    licenseArray = ['MIT']
-    licenseName = 'The MIT License'
-    licenseUrl = 'https://opensource.org/licenses/MIT'
+    licenseArray = ['Apache-2.0']
+    licenseName = 'Apache License, version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0'
     developerId = 'davidcryer'
     developerName = 'David Cryer'
     developerEmail = 'davecryer.dc@gmail.com'
